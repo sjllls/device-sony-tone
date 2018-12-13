@@ -68,7 +68,9 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 1785600:90 2073600:95"
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/sampling_down_factor 40000
+    # File does not exist on tone
+    # Command 'write /sys/devices/system/cpu/cpu2/cpufreq/interactive/sampling_down_factor 40000' action=sys.boot_completed=1 (/vendor/etc/init/init.tone.pwr.rc:71) took 1ms and failed: Unable to write to file '/sys/devices/system/cpu/cpu2/cpufreq/interactive/sampling_down_factor': open() failed: Permission denied
+    #write /sys/devices/system/cpu/cpu2/cpufreq/interactive/sampling_down_factor 40000
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 60000
 
     # re-enable thermal
@@ -106,9 +108,13 @@ on property:sys.boot_completed=1
     write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/sample_ms 4
     write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/io_percent 34
     write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_length 10
-    write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_ceil_mbps 0
-    write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_io_percent 34
-    write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_delay 20
+   # Files do not exist on tone:
+   # Command 'write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_ceil_mbps 0' action=sys.boot_completed=1 (/vendor/etc/init/init.tone.pwr.rc:109) took 0ms and failed: Unable to write to file '/sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_ceil_mbps': open() failed: Permission denied
+   # Command 'write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_io_percent 34' action=sys.boot_completed=1 (/vendor/etc/init/init.tone.pwr.rc:110) took 0ms and failed: Unable to write to file '/sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_io_percent': open() failed: Permission denied
+   # Command 'write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_delay 20' action=sys.boot_completed=1 (/vendor/etc/init/init.tone.pwr.rc:111) took 0ms and failed: Unable to write to file '/sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_delay': open() failed: Permission denied
+    #write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_ceil_mbps 0
+    #write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_io_percent 34
+    #write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/low_power_delay 20
     write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/guard_band_mbps 0
     write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/up_scale 250
     write /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/idle_mbps 1600
