@@ -75,7 +75,20 @@ TARGET_USES_GRALLOC1 := true
 # Cache partition
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
-# Platform witout a vendor partition
-TARGET_COPY_OUT_VENDOR := system/vendor
+BOARD_VNDK_VERSION := current
+PRODUCT_SHIPPING_API_LEVEL := 26
+PRODUCT_USE_VNDK_OVERRIDE := true
+# Include vndk/vndk-sp/ll-ndk modules
+PRODUCT_PACKAGES += vndk_package
+
+# Platform uses separate vendor partition
+TARGET_COPY_OUT_VENDOR := vendor
+
+BOARD_VENDORIMAGE_PARTITION_SIZE := 419430400
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_JOURNAL_SIZE := 0
+BOARD_VENDORIMAGE_EXTFS_INODE_COUNT := 4096
+
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 include device/sony/common/CommonConfig.mk
