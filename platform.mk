@@ -159,6 +159,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     vndk_package
 
+# HAL3
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.HAL3.enabled=1
+
 # Display HACK: Use GPU composition only
 ## TEMP: Skip loading libsdmextension.so in display hal
 PRODUCT_PROPERTY_OVERRIDES += \
