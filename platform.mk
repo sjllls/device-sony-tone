@@ -151,6 +151,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qti.sensors.als_scale=1 \
     ro.qfusion_use_report_period=false
 
+# Include vndk
+PRODUCT_PACKAGES += \
+    vndk_package
+
 # Display HACK: Use GPU composition only
 ## TEMP: Skip loading libsdmextension.so in display hal
 PRODUCT_PROPERTY_OVERRIDES += \
