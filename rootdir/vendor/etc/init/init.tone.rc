@@ -38,6 +38,17 @@ on boot
     # to one of the CPU from the default IRQ affinity mask.
     write /proc/irq/default_smp_affinity 3
 
+    # Setup permission for powerHAL
+   chown system system /dev/stune/top-app/schedtune.boost
+   chown system system /dev/cpu_dma_latency
+   chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/min_freq
+   chown system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+   chown system system /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+   chown system system /sys/class/devfreq/soc:qcom,gpubw/min_freq
+   chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count
+   chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hist_memory
+   chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_length
+
 on property:bluetooth.isEnabled=true
     write /sys/class/bluetooth/hci0/idle_timeout 7000
 
