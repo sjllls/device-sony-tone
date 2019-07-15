@@ -104,6 +104,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/vendor/etc/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
+# HIDL
+PRODUCT_COPY_FILES += \
+    $(PLATFORM_COMMON_PATH)/hidl/android.hidl.base@1.0.so-32:system/lib/android.hidl.base@1.0.so \
+    $(PLATFORM_COMMON_PATH)/hidl/android.hidl.base@1.0.so-64:system/lib64/android.hidl.base@1.0.so \
+    $(PLATFORM_COMMON_PATH)/hidl/android.hidl.base@1.0.so-32:$(TARGET_COPY_OUT_VENDOR)/lib/android.hidl.base@1.0.so \
+    $(PLATFORM_COMMON_PATH)/hidl/android.hidl.base@1.0.so-64:$(TARGET_COPY_OUT_VENDOR)/lib64/android.hidl.base@1.0.so
+
 # CAMERA
 PRODUCT_PACKAGES += \
     camera.msm8996
