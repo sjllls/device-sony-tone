@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,27 @@
  * limitations under the License.
  */
 
-#ifndef _QCOM_POWER_FEATURE_H
-#define _QCOM_POWER_FEATURE_H
+#ifndef __DISPLAY_HELPER_H__
+#define __DISPLAY_HELPER_H__
 
-#include <hardware/power.h>
-
-void set_device_specific_feature(feature_t feature, int state);
-
+#ifdef __cplusplus
+extern "C" {
 #endif
+
+#include <cutils/sockets.h>
+
+#define DAEMON_SOCKET "pps"
+
+enum display_lpm_state {
+    DISPLAY_LPM_OFF = 0,
+    DISPLAY_LPM_ON,
+    DISPLAY_LPM_UNKNOWN,
+};
+
+void set_display_lpm(int enable);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif //__DISPLAY_HELPER_H__
