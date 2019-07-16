@@ -97,20 +97,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8996
 
-# Power
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.3-service.crosshatch-libperfmgr
-
-PRODUCT_COPY_FILES += \
-    $(SONY_ROOT)/vendor/etc/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
-
-# HIDL
-PRODUCT_COPY_FILES += \
-    $(PLATFORM_COMMON_PATH)/hidl/android.hidl.base@1.0.so-32:system/lib/android.hidl.base@1.0.so \
-    $(PLATFORM_COMMON_PATH)/hidl/android.hidl.base@1.0.so-64:system/lib64/android.hidl.base@1.0.so \
-    $(PLATFORM_COMMON_PATH)/hidl/android.hidl.base@1.0.so-32:$(TARGET_COPY_OUT_VENDOR)/lib/android.hidl.base@1.0.so \
-    $(PLATFORM_COMMON_PATH)/hidl/android.hidl.base@1.0.so-64:$(TARGET_COPY_OUT_VENDOR)/lib64/android.hidl.base@1.0.so
-
 # CAMERA
 PRODUCT_PACKAGES += \
     camera.msm8996
