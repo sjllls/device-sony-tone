@@ -122,6 +122,9 @@
 # Fingerprint sensor  device
 /dev/fingerprint          0664 system input
 
+# Vibrator
+/sys/class/timed_output/vibrator/enable             0666 system    system
+
 # NFC
 /dev/pn54x                                             0660 nfc nfc
 /sys/devices/soc/75b6000.i2c/i2c-8/8-0028  init_deinit 0200 nfc nfc
@@ -133,9 +136,9 @@
 # LED
 /sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d800/leds/wled/brightness      0664 system system
 /sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d800/leds/wled/max_brightness  0664 system system
-/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* max_brightness 0664 system system
-/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* brightness     0664 system system
-/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* blink          0664 system system
+/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* max_brightness 0666 system system
+/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* brightness     0666 system system
+/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* blink          0666 system system
 /sys/class/leds/lcd-backlight max_brightness                         0644 root system
 /sys/class/leds/lcd-backlight brightness                             0664 system system
 
