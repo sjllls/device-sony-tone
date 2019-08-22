@@ -16,6 +16,8 @@
 PLATFORM_COMMON_PATH := device/sony/tone
 PRODUCT_PLATFORM_SOD := true
 
+QCOM_BT_USE_SMD_TTY := true
+
 TARGET_BOARD_PLATFORM := msm8996
 TARGET_KERNEL_VERSION := 4.4
 
@@ -71,6 +73,9 @@ BOARD_CUSTOM_BT_CONFIG := $(PLATFORM_COMMON_PATH)/bluetooth/vnd_generic.txt
 TARGET_PER_MGR_ENABLED := true
 
 # SELinux
+# As a BSP provider we don't recommend shipping selinux policies,
+# but there's nothing in the way of a distribution enabling selinux
+# in the kernel and making use of it for user space isolation. 
 # BOARD_SEPOLICY_DIRS += $(PLATFORM_COMMON_PATH)/sepolicy_platform
 BOARD_USE_ENFORCING_SELINUX := false
 
@@ -89,10 +94,11 @@ TARGET_LEGACY_KEYMASTER := true
 # Platform witout a vendor partition
 TARGET_COPY_OUT_VENDOR := system/vendor
 
-# Let other components rely on the kernel build tree
-TARGET_COMPILE_WITH_MSM_KERNEL := true
-
 # Force use of non-CAF HAL modules
 BOARD_USES_QCOM_HARDWARE := false
+
+# Location support
+USE_DEVICE_SPECIFIC_GPS := true
+USE_DEVICE_SPECIFIC_LOC_API := true
 
 include device/sony/common/CommonConfig.mk
