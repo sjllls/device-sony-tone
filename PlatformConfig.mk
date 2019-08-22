@@ -71,7 +71,7 @@ BOARD_CUSTOM_BT_CONFIG := $(PLATFORM_COMMON_PATH)/bluetooth/vnd_generic.txt
 TARGET_PER_MGR_ENABLED := true
 
 # SELinux
-BOARD_SEPOLICY_DIRS += $(PLATFORM_COMMON_PATH)/sepolicy_platform
+# BOARD_SEPOLICY_DIRS += $(PLATFORM_COMMON_PATH)/sepolicy_platform
 
 # Recovery
 # For split frame buffer in recovery
@@ -87,5 +87,8 @@ TARGET_LEGACY_KEYMASTER := true
 
 # Platform witout a vendor partition
 TARGET_COPY_OUT_VENDOR := system/vendor
+
+# Let other components rely on the kernel build tree
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 
 include device/sony/common/CommonConfig.mk
