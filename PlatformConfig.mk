@@ -73,7 +73,7 @@ BOARD_CUSTOM_BT_CONFIG := $(PLATFORM_COMMON_PATH)/bluetooth/vnd_generic.txt
 TARGET_PER_MGR_ENABLED := true
 
 # SELinux
-# As a BSP provider we don't recommend shipping selinux policies,
+# As a BSP provider we don't ship selinux policies ourselves,
 # but there's nothing in the way of a distribution enabling selinux
 # in the kernel and making use of it for user space isolation. 
 # BOARD_SEPOLICY_DIRS += $(PLATFORM_COMMON_PATH)/sepolicy_platform
