@@ -28,6 +28,8 @@ SOMC_PLATFORM := tone
 
 SONY_ROOT := $(PLATFORM_COMMON_PATH)/rootdir
 
+CM_BUILD := dora
+
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     $(PLATFORM_COMMON_PATH)/overlay
