@@ -20,7 +20,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
 $(call inherit-product, vendor/qcom/opensource/cryptfs_hw/Android.mk)
-$(call inherit-product, vendor/qcom/opensource/dataservices/rmnetctl/Android.mk)
+$(call inherit-product, vendor/qcom/opensource/dataservices/Android.mk)
 $(call inherit-product, vendor/qcom/opensource/fm/Android.mk)
 $(call inherit-product, vendor/qcom/opensource/location/loc_api/Android.mk)
 
@@ -69,11 +69,7 @@ PRODUCT_COPY_FILES += \
 # QCOM netmgrd support
 PRODUCT_PACKAGES += \
     librmnetctl \
-    rmnetctl
-
-PRODUCT_COPY_FILES += \
-    out/target/product/dora/symbols/system/vendor/lib/librmnetctl.so:system/vendor/lib/librmnetctl.so \
-    out/target/product/dora/symbols/system/vendor/lib64/librmnetctl.so:system/vendor/lib64/librmnetctl.so
+    rmnetcli
 
 # Platform power configuration
 PRODUCT_PACKAGES += \
