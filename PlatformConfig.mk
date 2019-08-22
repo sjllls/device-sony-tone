@@ -72,6 +72,7 @@ TARGET_PER_MGR_ENABLED := true
 
 # SELinux
 # BOARD_SEPOLICY_DIRS += $(PLATFORM_COMMON_PATH)/sepolicy_platform
+BOARD_USE_ENFORCING_SELINUX := false
 
 # Recovery
 # For split frame buffer in recovery
@@ -90,5 +91,8 @@ TARGET_COPY_OUT_VENDOR := system/vendor
 
 # Let other components rely on the kernel build tree
 TARGET_COMPILE_WITH_MSM_KERNEL := true
+
+# Force use of non-CAF HAL modules
+BOARD_USES_QCOM_HARDWARE := false
 
 include device/sony/common/CommonConfig.mk
