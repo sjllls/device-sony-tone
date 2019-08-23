@@ -169,3 +169,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # WiFi MAC address path
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.wifi.addr_path=/sys/devices/soc/soc:bcmdhd_wlan/macaddr
+
+# telepathy-ofono quirks
+PRODUCT_PROPERTY_OVERRIDES += \
+    t-o.quirk.forcesinkprimary=1 \
+    t-o.quirk.forcesourceprimary=1
