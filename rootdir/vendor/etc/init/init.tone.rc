@@ -12,15 +12,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+on early-init
+    # Override energy-aware scheduler tuning nodes creation with block I/O support
+    mkdir /dev/stune
+    mount cgroup none /dev/stune nodev noexec nosuid schedtune,blkio
+
 on init
     # Boot time fs tune
-    write /sys/block/mmcblk0/queue/iostats 0
-    write /sys/block/mmcblk0/queue/scheduler cfq
-    write /sys/block/mmcblk0/queue/iosched/slice_idle 0
-    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
-    write /sys/block/mmcblk0/queue/nr_requests 256
+    write /sys/block/sda/queue/iostats 0
+    write /sys/block/sda/queue/scheduler cfq
+    write /sys/block/sda/queue/iosched/slice_idle 0
+    write /sys/block/sda/queue/read_ahead_kb 2048
+    write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/sdb/queue/iostats 0
+    write /sys/block/sdb/queue/scheduler cfq
+    write /sys/block/sdb/queue/iosched/slice_idle 0
+    write /sys/block/sdb/queue/read_ahead_kb 2048
+    write /sys/block/sdb/queue/nr_requests 256
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
+
+    write /dev/stune/blkio.group_idle 0
+    write /dev/stune/foreground/blkio.group_idle 0
+    write /dev/stune/background/blkio.group_idle 0
+    write /dev/stune/top-app/blkio.group_idle 0
+    write /dev/stune/rt/blkio.group_idle 0
 
 on boot
     # WLAN and BT MAC
@@ -30,16 +46,14 @@ on boot
     # update foreground cpuset now that processors are up
     write /dev/cpuset/foreground/cpus 0-3
     write /dev/cpuset/foreground/boost/cpus 0-3
-    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-1
-
-    # Set the default IRQ affinity to the primary cluster. When a
-    # CPU is isolated/hotplugged, the IRQ affinity is adjusted
-    # to one of the CPU from the default IRQ affinity mask.
-    write /proc/irq/default_smp_affinity 3
 
 on property:bluetooth.isEnabled=true
     write /sys/class/bluetooth/hci0/idle_timeout 7000
+
+    # Set custom LMK parameters
+    write /sys/module/lowmemorykiller/parameters/forced_minfree 14746,18432,22118,25805,34415,43737
 
 on property:sys.boot_completed=1
     # Runtime fs tuning for runtime performance
