@@ -182,6 +182,10 @@ PRODUCT_USE_VNDK_OVERRIDE := true
 PRODUCT_PACKAGES += \
     vndk_package
 
+# HAL3
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.HAL3.enabled=1
+
 # setup dm-verity configs.
 # PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/7464900.sdhci/by-name/system
 # $(call inherit-product, build/target/product/verity.mk)
