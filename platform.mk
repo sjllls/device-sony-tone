@@ -16,7 +16,7 @@
 PLATFORM_COMMON_PATH := device/sony/tone
 
 SOMC_PLATFORM := tone
-SOMC_KERNEL_VERSION := 4.14
+SOMC_KERNEL_VERSION := 4.9
 
 $(call inherit-product, device/sony/common/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
