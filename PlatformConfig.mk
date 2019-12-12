@@ -40,8 +40,6 @@ BOARD_KERNEL_CMDLINE += androidboot.bootdevice=7464900.sdhci
 # Serial console
 #BOARD_KERNEL_CMDLINE += earlycon=msm_serial_dm,0x075b0000 restore_msm_uart=0x01014000
 
-TARGET_RECOVERY_FSTAB ?= $(PLATFORM_COMMON_PATH)/rootdir/vendor/etc/fstab.tone
-
 # Wi-Fi definitions for Broadcom solution but using brcmfmac instead of bcmdhd kernel driver
 BOARD_WLAN_DEVICE           := qcwcn
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
@@ -74,7 +72,25 @@ endif
 # Cache partition
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
+include device/sony/common/CommonConfig.mk
+
+ifeq ($(PRODUCT_FAKE_TREBLE_BUILD),true)
+# Platform uses separate vendor partition
+TARGET_COPY_OUT_VENDOR := vendor
+else
 # Platform witout a vendor partition
 TARGET_COPY_OUT_VENDOR := system/vendor
+endif
 
-include device/sony/common/CommonConfig.mk
+ifeq ($(PRODUCT_FAKE_TREBLE_BUILD),true)
+BOARD_VENDORIMAGE_PARTITION_SIZE := 419430400
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_JOURNAL_SIZE := 0
+BOARD_VENDORIMAGE_EXTFS_INODE_COUNT := 4096
+endif
+
+ifeq ($(PRODUCT_FAKE_TREBLE_BUILD),true)
+TARGET_RECOVERY_FSTAB ?= $(PLATFORM_COMMON_PATH)/rootdir/vendor/etc/fstab.tone_treble
+else
+TARGET_RECOVERY_FSTAB ?= $(PLATFORM_COMMON_PATH)/rootdir/vendor/etc/fstab.tone
+endif

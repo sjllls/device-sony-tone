@@ -169,6 +169,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.wifi.addr_path=/sys/devices/platform/soc/soc:bcmdhd_wlan/macaddr
 
+# Not entirely true...
+#PRODUCT_SHIPPING_API_LEVEL := 26
+
 # setup dm-verity configs.
 # PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/7464900.sdhci/by-name/system
 # $(call inherit-product, build/target/product/verity.mk)
