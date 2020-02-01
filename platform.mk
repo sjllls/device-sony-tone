@@ -68,10 +68,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/vendor/etc/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
-# RQBalance-PowerHAL configuration
-PRODUCT_COPY_FILES += \
-    $(SONY_ROOT)/vendor/etc/rqbalance_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/rqbalance_config.xml
-
 # Platform specific init
 PRODUCT_PACKAGES += \
     init.tone \
@@ -165,9 +161,22 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.controller=6a00000.dwc3 \
     sys.usb.rndis.func.name=rndis_bam
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.3-service.tone-libperfmgr \
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service
+
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/vendor/etc/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+
 # WiFi MAC address path
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.wifi.addr_path=/sys/devices/platform/soc/soc:bcmdhd_wlan/macaddr
+
+# HAL3
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.HAL3.enabled=1
 
 # Not entirely true...
 #PRODUCT_SHIPPING_API_LEVEL := 26
