@@ -169,6 +169,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.wifi.addr_path=/sys/devices/platform/soc/soc:bcmdhd_wlan/macaddr
 
+# HAL3
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.HAL3.enabled=1
+
 # Not entirely true...
 #PRODUCT_SHIPPING_API_LEVEL := 26
 
