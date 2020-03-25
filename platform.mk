@@ -28,8 +28,6 @@ SOMC_PLATFORM := tone
 
 SONY_ROOT := $(PLATFORM_COMMON_PATH)/rootdir
 
-CM_BUILD := dora
-
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     $(PLATFORM_COMMON_PATH)/overlay
@@ -68,12 +66,29 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml \
     frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml
 
-# Ubuntu Touch Mir/hybris integration
-PRODUCT_PACKAGES += \
-    libaudioflingerglue \
-    libminisf \
-    miniafservice \
-    minimediaservice
+# Ubuntu Touch timekeeper support
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/system/halium/etc/init/timekeeper.conf:system/halium/etc/init/timekeeper.conf
+
+# Ubuntu Touch/ofono LTE support
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/system/halium/etc/init/ofono.override:system/halium/etc/init/ofono.override
+
+# Ubuntu Touch wakelock unblocking
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/system/etc/unblock_wakelock.sh:system/etc/unblock_wakelock.sh
+
+# Ubuntu Touch F8132 Dual-Sim enabling
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/system/etc/enable_dual_sim.sh:system/etc/enable_dual_sim.sh
+
+# Ubuntu Touch repowerd override (auto brightness, etc.)
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/system/halium/usr/share/powerd/device_configs/config-default.xml:system/halium/usr/share/powerd/device_configs/config-default.xml
+
+# Ubuntu Touch camera support
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.HAL3.enabled=0
 
 # QCOM netmgrd support
 PRODUCT_PACKAGES += \
@@ -169,8 +184,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # WiFi MAC address path
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.wifi.addr_path=/sys/devices/soc/soc:bcmdhd_wlan/macaddr
-
-# telepathy-ofono quirks
-PRODUCT_PROPERTY_OVERRIDES += \
-    t-o.quirk.forcesinkprimary=1 \
-    t-o.quirk.forcesourceprimary=1

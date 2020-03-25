@@ -62,5 +62,21 @@ service minimedia /system/bin/minimediaservice
     setenv LD_PRELOAD /system/lib/libOmxVdec.so
     setenv MINIMEDIA_SENSORSERVER_DISABLE 1
 
+on property:init.svc.sensorservice=running
+    start unblock_wakelock
+
+service enable_dual_sim /system/bin/sh /system/etc/enable_dual_sim.sh
+    class core
+    user root
+    group root
+    oneshot
+
+service unblock_wakelock /system/bin/sh /system/etc/unblock_wakelock.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
 on property:bluetooth.isEnabled=true
     write /sys/class/bluetooth/hci0/idle_timeout 7000

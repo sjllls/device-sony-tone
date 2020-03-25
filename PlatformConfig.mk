@@ -101,4 +101,7 @@ BOARD_USES_QCOM_HARDWARE := false
 USE_DEVICE_SPECIFIC_GPS := true
 USE_DEVICE_SPECIFIC_LOC_API := true
 
+# Loire has a too small cache partition
+HALIUM_DATA_AS_CACHE := true
+
 include device/sony/common/CommonConfig.mk
