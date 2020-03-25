@@ -3,13 +3,13 @@
 /dev/ion                  0664   system     system
 /dev/rtc0                 0660   system     system
 /dev/smd0                 0660   system     system
-/dev/smd3                 0660   bluetooth  bluetooth
-/dev/smd2                 0660   bluetooth  bluetooth
+/dev/smd3                 0660   bluetooth  net_bt_stack
+/dev/smd2                 0660   bluetooth  net_bt_stack
 /dev/smd4                 0660   system     system
 /dev/smd_cxm_qmi          0640   radio      radio
 /dev/smd5                 0660   system     system
 /dev/smd6                 0660   system     system
-/dev/smd7                 0660   bluetooth  bluetooth
+/dev/smd7                 0660   bluetooth  net_bt_stack
 /dev/ipa                  0660   system     net_admin
 /dev/wwan_ioctl           0660   system     net_admin
 /dev/ipaNatTable          0660   net_admin  net_admin
@@ -115,15 +115,12 @@
 
 # BT
 /dev/hidraw*                                        0666 system    system
-/dev/rfkill                                         0660 bluetooth bluetooth
-/dev/ttyHS0                                         0660 bluetooth bluetooth
-/dev/ttyMSM0                                        0660 bluetooth bluetooth
+/dev/rfkill                                         0660 bluetooth net_bt_stack
+/dev/ttyHS0                                         0660 bluetooth net_bt_stack
+/dev/ttyMSM0                                        0660 bluetooth net_bt_stack
 
 # Fingerprint sensor  device
 /dev/fingerprint          0664 system input
-
-# Vibrator
-/sys/class/timed_output/vibrator/enable             0666 system    system
 
 # NFC
 /dev/pn54x                                             0660 nfc nfc
@@ -136,9 +133,9 @@
 # LED
 /sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d800/leds/wled/brightness      0664 system system
 /sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d800/leds/wled/max_brightness  0664 system system
-/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* max_brightness 0666 system system
-/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* brightness     0666 system system
-/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* blink          0666 system system
+/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* max_brightness 0664 system system
+/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* brightness     0664 system system
+/sys/devices/soc/400f000.qcom,spmi/spmi-0/spmi0-03/400f000.qcom,spmi:qcom,pmi8994@3:qcom,leds@d000/leds/led:* blink          0664 system system
 /sys/class/leds/lcd-backlight max_brightness                         0644 root system
 /sys/class/leds/lcd-backlight brightness                             0664 system system
 
