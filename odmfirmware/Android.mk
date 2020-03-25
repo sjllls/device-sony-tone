@@ -6,7 +6,7 @@ $(shell pushd $(PRODUCT_OUT)/$(TARGET_COPY_OUT_VENDOR)/lib/hw > /dev/null && ln 
 $(shell mkdir -p $(PRODUCT_OUT)/$(TARGET_COPY_OUT_VENDOR)/etc)
 $(shell pushd $(PRODUCT_OUT)/$(TARGET_COPY_OUT_VENDOR)/etc > /dev/null && ln -s /system/etc/audio_policy.conf audio_policy.conf && popd > /dev/null)
 $(shell mkdir -p $(PRODUCT_OUT)/$(TARGET_COPY_OUT_SYSTEM)/etc)
-$(shell pushd $(PRODUCT_OUT)/$(TARGET_COPY_OUT_SYSTEM)/etc > /dev/null && ln -s /system/etc/mixer_paths.xml mixer_paths.xml && popd > /dev/null)
+$(shell pushd $(PRODUCT_OUT)/$(TARGET_COPY_OUT_SYSTEM)/etc > /dev/null && ln -s /system/etc/mixer_paths.xml mixer_paths_wcd9335.xml && popd > /dev/null)
 
 # Symlinks to firmware in /odm
 $(shell mkdir -p $(PRODUCT_OUT)/$(TARGET_COPY_OUT_VENDOR)/firmware)
