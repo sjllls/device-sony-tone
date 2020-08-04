@@ -86,6 +86,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/system/halium/usr/share/powerd/device_configs/config-default.xml:system/halium/usr/share/powerd/device_configs/config-default.xml
 
+# Ubuntu Touch Bluetooth support
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/rootdir/system/halium/usr/share/bluetooth-touch/tone:system/halium/usr/share/bluetooth-touch/tone \
+    $(DEVICE_PATH)/rootdir/system/halium/etc/init/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
+
 # Ubuntu Touch camera support
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.HAL3.enabled=0
